@@ -16,7 +16,7 @@ const WORD_COLOR = {
 	"green"  : Color(0, 1, 0),
 	"blue"   : Color(0, 0, 1),
 	"yellow" : Color(1, 1, 0),
-	"purple" : Color(1, 0, 1),
+	"purple" : Color(0.5, 0, 0.5),
 	"orange" : Color(1, 0.5, 0),
 	"white"  : Color(1, 1, 1)
 }
