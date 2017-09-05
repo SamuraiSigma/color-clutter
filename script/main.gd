@@ -28,7 +28,7 @@ var current_state = GAME_STATE.BEGIN
 enum ANSWER_TYPE { WORD, FILL, BACKGROUND }
 
 # Speech Recognizer node
-onready var sr_runner = get_node("STT")
+onready var stt = get_node("STT")
 
 # Node for current word label
 onready var current_word = get_node("Word")
@@ -47,7 +47,7 @@ func create_word():
 
 	var color = WORD_COLOR.keys()[randi() % WORD_COLOR.size()]
 	current_word.add_color_override("font_color", WORD_COLOR[color])
-	
+
 	var scale_x = rand_range(MIN_WORD_LENGTH, MAX_WORD_LENGTH + 1)
 	var scale_y = scale_x/LENGTH_HEIGHT_PROPORTION
 	current_word.set_scale(Vector2(scale_x, scale_y))
@@ -58,7 +58,7 @@ func create_word():
 	var x = rand_range(longest_size, screen_size.x - longest_size)
 	var y = rand_range(longest_size, screen_size.y - longest_size)
 	current_word.set_pos(Vector2(x, y))
-	
+
 	var rotation = rand_range(-MAX_ROTATION, MAX_ROTATION)
 	current_word.set_rotation(rotation)
 
@@ -67,7 +67,7 @@ func create_word():
 
 func next_stage():
 	var color = create_word()
-	
+
 	var bg_color
 	while true:
 		bg_color = WORD_COLOR.keys()[randi() % WORD_COLOR.size()]
@@ -75,7 +75,7 @@ func next_stage():
 			break
 
 	VisualServer.set_default_clear_color(WORD_COLOR[bg_color])
-	
+
 	var type = randi() % ANSWER_TYPE.size()
 	if type == ANSWER_TYPE.WORD:
 		answer = current_word.get_text()
@@ -94,7 +94,7 @@ func answer_correct():
 
 	# Clear current word and STT queue
 	current_word.set_text("")
-	sr_runner.get_queue().clear()
+	stt.get_queue().clear()
 
 	# Update score
 	score += 1
@@ -110,10 +110,10 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 	# Start speech recognition
-	sr_runner.get_config().init()
-	var queue = SRQueue.new()
-	sr_runner.set_queue(queue)
-	sr_runner.start()
+	stt.get_config().init()
+	var queue = STTQueue.new()
+	stt.set_queue(queue)
+	stt.start()
 
 	# Define function called by timeout signal
 	get_node("Timer").connect("timeout", self, "end_game")
@@ -121,11 +121,11 @@ func _ready():
 	get_node("Score").set_text("")
 	get_node("AnswerType").set_text("")
 	get_node("Word").set_text("")
-	
+
 	var start_msg = get_node("StartMessage")
 	var size = start_msg.get_minimum_size()
 	start_msg.set_pos((screen_size - size)/2)
-	
+
 	set_process(true)
 
 
@@ -133,8 +133,8 @@ func _process(delta):
 	if current_state == GAME_STATE.BEGIN:
 		score = 0
 
-		if not sr_runner.get_queue().empty():
-			var user_input = sr_runner.get_queue().get()
+		if not stt.get_queue().empty():
+			var user_input = stt.get_queue().get()
 			if user_input == "start":
 				get_node("GameStart").play()
 				get_node("Timer").start()
@@ -145,9 +145,9 @@ func _process(delta):
 	elif current_state == GAME_STATE.RUNNING:
 		if current_word.get_text() == "":
 			next_stage()
-	
-		if not sr_runner.get_queue().empty():
-			var user_input = sr_runner.get_queue().get()
+
+		if not stt.get_queue().empty():
+			var user_input = stt.get_queue().get()
 			if user_input == answer:
 				answer_correct()
 			elif user_input == "exit":
