@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://script/main.gd" type="Script" id=1]
 [ext_resource path="res://font/nunito.fnt" type="BitmapFont" id=2]
-[ext_resource path="res://script/timer.gd" type="Script" id=3]
-[ext_resource path="res://font/tickingTimeBomb.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://sound/start.ogg" type="AudioStream" id=5]
-[ext_resource path="res://sound/chime.ogg" type="AudioStream" id=6]
+[ext_resource path="res://script/score.gd" type="Script" id=3]
+[ext_resource path="res://script/word.gd" type="Script" id=4]
+[ext_resource path="res://script/timer.gd" type="Script" id=5]
+[ext_resource path="res://font/tickingTimeBomb.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://sound/start.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sound/chime.ogg" type="AudioStream" id=8]
 
 [sub_resource type="STTConfig" id=1]
 
@@ -13,7 +15,7 @@
 "dictionary file" = "res://stt/cmudict-en-us.dict"
 "keywords file" = "res://stt/commands.kws"
 
-[node name="Game" type="Node2D"]
+[node name="Main" type="Node2D"]
 
 script/script = ExtResource( 1 )
 
@@ -23,10 +25,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 419.0
-margin/top = 300.0
-margin/right = 635.0
-margin/bottom = 343.0
+margin/left = 404.0
+margin/top = 278.0
+margin/right = 620.0
+margin/bottom = 321.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Say \"start\""
@@ -54,6 +56,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script/script = ExtResource( 3 )
 
 [node name="AnswerType" type="Label" parent="."]
 
@@ -90,6 +93,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+script/script = ExtResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -97,7 +101,7 @@ process_mode = 0
 wait_time = 60.0
 one_shot = true
 autostart = false
-script/script = ExtResource( 3 )
+script/script = ExtResource( 5 )
 
 [node name="AverageTime" type="Label" parent="Timer"]
 
@@ -111,7 +115,7 @@ margin/left = 927.0
 margin/top = 586.0
 margin/right = 24.0
 margin/bottom = 51.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.171875, 0.171875, 0.171875, 1 )
 text = "Timer"
@@ -121,7 +125,7 @@ max_lines_visible = -1
 
 [node name="GameStart" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 5 )
+stream/stream = ExtResource( 7 )
 stream/play = false
 stream/loop = false
 stream/volume_db = 0.0
@@ -132,7 +136,7 @@ stream/buffering_ms = 500
 
 [node name="Chime" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 6 )
+stream/stream = ExtResource( 8 )
 stream/play = false
 stream/loop = false
 stream/volume_db = 0.0
