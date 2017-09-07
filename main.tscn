@@ -88,8 +88,6 @@ margin/right = 577.0
 margin/bottom = 202.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-align = 1
-valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -103,7 +101,7 @@ one_shot = true
 autostart = false
 script/script = ExtResource( 5 )
 
-[node name="AverageTime" type="Label" parent="Timer"]
+[node name="TimeLeft" type="Label" parent="Timer"]
 
 anchor/top = 1
 anchor/right = 1

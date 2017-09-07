@@ -8,6 +8,6 @@ func _process(delta):
 	if .get_time_left() > 0:
 		var time_left = .get_time_left()
 		var time_left_str = String(time_left).substr(0, 5)
-		get_node("AverageTime").set_text(time_left_str)
+		get_node("TimeLeft").set_text(time_left_str)
 	else:
-		get_node("AverageTime").set_text("")
+		get_node("TimeLeft").set_text("")

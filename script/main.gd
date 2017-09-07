@@ -71,7 +71,7 @@ func update_answer():
 
 func answer_hit():
 	get_node("Chime").play()
-	stt.get_queue().clear()
+	queue.clear()
 	score.update()
 
 func start_game():
@@ -84,8 +84,9 @@ func start_game():
 
 func end_game():
 	get_node("AnswerType").set_text("")
-	get_node("Word").set_text("")
+
 	get_node("StartMessage").set_opacity(1.0)
+	current_word.set_text("")
 	current_state = GAME_STATE.START
 
 func _ready():
@@ -103,7 +104,7 @@ func _ready():
 	# Clear text of some labels
 	get_node("Score").set_text("")
 	get_node("AnswerType").set_text("")
-	get_node("Word").set_text("")
+	current_word.set_text("")
 
 	set_process(true)
 
