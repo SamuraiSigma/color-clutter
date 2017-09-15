@@ -54,6 +54,9 @@ Two other voice commands exist:
 
 The below assets were used in this game:
 
+- **Speech to text**
+  - Model and dictionary files are from [Pocketsphinx 5prealpha][pocketsphinx]
+
 - **Fonts**
   - [Nunito][nunito] as the main font
   - [Ticking Time Bomb][tickingTimeBomb] for the clock font
@@ -66,6 +69,7 @@ The below assets were used in this game:
   - [Gooey molecule][gooeyMolecule] as the game icon
 
 [godot]: https://godotengine.org "Godot site"
+[pocketsphinx]: https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/
 [nunito]: https://fonts.google.com/specimen/Nunito
 [tickingTimeBomb]: https://www.1001freefonts.com/ticking_time_bomb.font
 [toneBeep]: https://freesound.org/people/pan14/sounds/263133/
