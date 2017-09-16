@@ -94,9 +94,16 @@ func _ready():
 	randomize()
 
 	# Start speech recognition
-	stt.get_config().init()
+	var err = stt.get_config().init()
+	if err != STTError.OK:
+		print(STTError.get_error_string(err))
+		get_tree().quit()
+
 	stt.set_queue(queue)
-	stt.start()
+	err = stt.start()
+	if err != STTError.OK:
+		print(STTError.get_error_string(err))
+		get_tree().quit()
 
 	# Define function called by timeout signal
 	get_node("Timer").connect("timeout", self, "end_game")
@@ -111,6 +118,12 @@ func _ready():
 # Game loop
 func _process(delta):
 	var user_input
+
+	if !stt.running():
+		var err = stt.get_run_error()
+		print(STTError.get_error_string(err))
+		get_tree().quit()
+
 	if not stt.get_queue().empty():
 		user_input = stt.get_queue().get()
 
