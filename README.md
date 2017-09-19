@@ -3,9 +3,12 @@
 This is a simple game, **Color Clutter**, made in [Godot 2.1.3][godot], created as a
 demo to show off the *Speech to Text* module.
 
-## Rules
+## Requirement
 
-This section explains how to play the game.
+You will need a microphone connected to your system. If more than one is connected,
+**Color Clutter** will use the microphone configured as default.
+
+## Rules
 
 ### Objective
 
