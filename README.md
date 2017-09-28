@@ -1,7 +1,7 @@
 # Color Clutter
 
 This is a simple game, **Color Clutter**, made in [Godot 2.1.3][godot], created as a
-demo to show off the *Speech to Text* module.
+demo to show off the [*Speech to Text*][sttModule] module.
 
 ## Requirement
 
@@ -72,9 +72,11 @@ The below assets were used in this game:
   - [Gooey molecule][gooeyMolecule] as the game icon
 
 [godot]: https://godotengine.org "Godot site"
-[pocketsphinx]: https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/
-[nunito]: https://fonts.google.com/specimen/Nunito
-[tickingTimeBomb]: https://www.1001freefonts.com/ticking_time_bomb.font
-[toneBeep]: https://freesound.org/people/pan14/sounds/263133/
-[gameStart]: https://freesound.org/people/plasterbrain/sounds/243020/
-[gooeyMolecule]: http://game-icons.net/lorc/originals/gooey-molecule.html
+[sttModule]: https://github.com/SamuraiSigma/speech-to-text "Speech to Text module repository"
+[pocketsphinx]: https://sourceforge.net/projects/cmusphinx/files/pocketsphinx/5prealpha/ "Sphinx site"
+
+[nunito]: https://fonts.google.com/specimen/Nunito "Nunito font"
+[tickingTimeBomb]: https://www.1001freefonts.com/ticking_time_bomb.font "Ticking Time Bomb font"
+[toneBeep]: https://freesound.org/people/pan14/sounds/263133/ "Beep sound"
+[gameStart]: https://freesound.org/people/plasterbrain/sounds/243020/ "Game start sound"
+[gooeyMolecule]: http://game-icons.net/lorc/originals/gooey-molecule.html "Game icon"
